@@ -80,6 +80,8 @@ rosbag play 00.bag
 
 **Step 2**: Launch the nodes using the `launch/lgsvl.launch` launch file
 ```bash
+# install dependencies
+sudo apt install ros-noetic-jsk-rviz-plugins
 # launch node
 roslaunch lidar_obstacle_detector lgsvl.launch 
 ```
