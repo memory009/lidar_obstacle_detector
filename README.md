@@ -17,6 +17,7 @@
 ![demo_2](media/demo_2.gif)
 
 ## Features
+
 * Segmentation of ground plane and obstacle point clouds
 * Customizable Region of Interest (ROI) for obstacle detection
 * Customizable region for removing ego vehicle points from the point cloud
@@ -24,19 +25,23 @@
 * In order to help you tune the parameters to suit your own applications better, all the key parameters of the algorithm are controllable in live action using the ros param dynamic reconfigure feature
 
 **TODOs**
+
 * LiDAR pointcloud motion undistortion
 * Drive Space/Kurb Segmentation
 * Refine PCA Bounding Boxes by L-Shape fitting
 * Add trackers such as UKF
 
 **Known Issues**
+
 * PCA Bounding Boxes might not be accurate in certain situations
 
 ## Dependencies
+
 * autoware-msgs
 * jsk-recognition-msgs
 
 ## Installation
+
 ```bash
 # clone the repo
 cd catkin_ws/src
@@ -58,12 +63,18 @@ source devel/setup.bash
 **Step 1**: Download the `mai_city` dataset from their [Official Website](https://www.ipb.uni-bonn.de/data/mai-city-dataset/)
 
 **Step 2**: Launch the nodes using the `mai_city.launch` launch file
+
 ```bash
 # this will launch the obstacle_detector node, rviz, and rqt_reconfigure GUI together
+# if you want to run demo,please use the first line in terminal
+# if you want to connnect with carla utilize ros-carla bridge, please use the second line in terminal
+roslaunch lidar_obstacle_detector demo.launch
+# or 
 roslaunch lidar_obstacle_detector mai_city.launch
 ```
 
 **Step 3**: Run any of the bags from the dataset
+
 ```bash
 # go to the folder where the dataset is located
 cd mai_city/bags
@@ -71,28 +82,3 @@ cd mai_city/bags
 rosbag play 00.bag
 ```
 
-### 2. Use this pkg with LGSVL Simulator (with the help of the [`lgsvl_utils`](https://github.com/SS47816/lgsvl_utils) pkg)
-
-![demo_lgsvl](media/lgsvl.gif)
-
-**Step 1**: Launch the LGSVL simulator and `lgsvl_utils` nodes 
-> Please refer this step to the [`README` Usage Section](https://github.com/SS47816/lgsvl_utils) of the `lgsvl_utils` pkg
-
-**Step 2**: Launch the nodes using the `launch/lgsvl.launch` launch file
-```bash
-# install dependencies
-sudo apt install ros-noetic-jsk-rviz-plugins
-# launch node
-roslaunch lidar_obstacle_detector lgsvl.launch 
-```
-
-## Contribution
-You are welcome contributing to the package by opening a pull-request
-
-We are following: 
-[Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html), 
-[C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#main), 
-and [ROS C++ Style Guide](http://wiki.ros.org/CppStyleGuide)
-
-## License
-MIT License
